@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anta&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>Časový odpočet - Countdown 3</title>
+</head>
+<body>
+    <h1>Časový odpočet č. 3</h1>
+    <h2>Zbývající čas</h2>
+    <p id="remainingTime"></p>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
+    <script>
+        const socket = io();
+
+        socket.on('updateTime2', (remainingTime) => {
+            updateDisplay(remainingTime);
+        });
+
+        function updateDisplay(remainingTime) {
+            const minutes = Math.floor(remainingTime / 60);
+            const seconds = remainingTime % 60;
+
+            if (remainingTime > 0) {
+                document.getElementById('remainingTime').innerText = `${minutes} minut ${seconds.toString().padStart(2, '0')} sekund`;
+            } else {
+                document.getElementById('remainingTime').innerText = 'Čas vypršel!';
+            }
+        }
+
+        setInterval(() => {
+            socket.emit('updateTimeRequest', 2);
+        }, 1000);
+    </script>
+</body>
+</html>

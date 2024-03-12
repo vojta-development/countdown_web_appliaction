@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anta&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>Ovládání Countdownu</title>
+</head>
+<body>
+    <h1>Ovládání Countdownu</h1>
+    <div class="form">
+    <form id="subtractForm">
+        <div class="select-container">
+            <label for="countdownIndex">Vyberte tým:</label>
+            <select id="countdownIndex" name="countdownIndex" class="select-box">
+                <option value="0">Tým 1</option>
+                <option value="1">Tým 2</option>
+                <option value="2">Tým 3</option>
+                <option value="3">Tým 4</option>
+                <!-- Add more options as needed -->
+            </select>
+        </div>    
+    </br>
+
+        <label for="minutes">Odečíst minuty:</label>
+        <input type="number" id="minutes" name="minutes" class="vstup" required>
+
+        <button type="submit" id="subtractButton" class="btn odecist">Odečíst čas</button>
+        <br>
+        <!-- Ovládací tlačítka pro zastavení, spuštění a reset countdownu -->
+        <button type="button" id="startButton" class="btn start" onclick="startCountdown(document.getElementById('countdownIndex').value)">START</button>
+        <button type="button" id="stopButton" class="btn stop" onclick="stopCountdown(document.getElementById('countdownIndex').value)">STOP</button>
+        <button type="button" id="resetButton" class="btn reset" onclick="resetCountdown(document.getElementById('countdownIndex').value)">RESET</button>
+    </form>
+
+    <div id="messageContainer"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
+    <script>
+        
+
+
+
+    </script>
+<script>
+    const socket = io();
+
+    document.getElementById('subtractForm').addEventListener('submit', function (event) {
+        event.preventDefault();
+        const countdownIndex = document.getElementById('countdownIndex').value;
+        const minutes = document.getElementById('minutes').value;
+        socket.emit('subtractTime', { countdownIndex, minutes });
+    });
+
+    socket.on('timeError', (message) => {
+        displayMessage(message, 'error');
+        setTimeout(() => {
+            clearMessage();
+        }, 4000);
+    });
+
+    socket.on('subtractSuccess', (message) => {
+        displayMessage(message, 'success');
+        setTimeout(() => {
+            clearMessage();
+        }, 4000);
+    });
+
+    socket.on('disableForm', () => {
+        document.getElementById('subtractButton').disabled = true;
+    });
+
+    socket.on('enableForm', () => {
+        document.getElementById('subtractButton').disabled = false;
+        clearMessage();
+    });
+
+    // Funkce pro spuštění countdownu
+    function startCountdown(countdownIndex) {
+        socket.emit('startCountdown', countdownIndex);
+    }
+
+        function displayMessage(message, type) {
+            const messageContainer = document.getElementById('messageContainer');
+            const messageElement = document.createElement('div');
+            messageElement.textContent = message;
+            messageElement.className = type;
+            messageContainer.appendChild(messageElement);
+        }
+
+        function clearMessage() {
+            const messageContainer = document.getElementById('messageContainer');
+            messageContainer.innerHTML = '';
+        }
+
+
+
+        //ovládací tlačítka
+        function stopCountdown(countdownIndex) {
+    socket.emit('stopCountdown', countdownIndex);
+}
+
+function startCountdown(countdownIndex) {
+    socket.emit('startCountdown', countdownIndex);
+}
+
+function resetCountdown(countdownIndex) {
+    socket.emit('resetCountdown', countdownIndex);
+}
+    </script>
+
+    <style>
+        .error {
+            color: red;
+        }
+
+        .success {
+            color: green;
+        }
+    </style>
+</body>
+</html>

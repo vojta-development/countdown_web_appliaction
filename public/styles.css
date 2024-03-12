@@ -1,0 +1,138 @@
+  body{
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @media screen and (max-width: 600px) {
+    body {
+      width: 100%;
+    }
+  }
+
+  h1 {
+    font-family: "Montserrat", sans-serif;
+    font-size: 45px;
+    font-weight: 800;
+    font-style: normal;
+    text-align: center;
+    margin: 40px 15px;
+  }
+  
+  h2 {
+    font-family: "Montserrat", sans-serif;
+    font-size: 33px;
+    font-weight: 400;
+    font-style: normal;
+    text-align: center;
+  }
+
+  p {
+    font-family: "Montserrat", sans-serif;
+    font-size: 28px;
+    font-weight: 400;
+    font-style: normal;
+    text-align: center;
+  }  
+
+  form {
+    text-align: center;
+    margin: 15px;
+  }
+
+  label {
+    text-align: center;
+    font-size: 22px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 15px;
+  }
+
+  input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid #f2f2f2;
+    border-radius: 4px;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+  }
+  input:focus {
+    border: 2px solid #2196F3;
+  }
+
+  .btn {
+    border: 2px solid black;
+    background-color: white;
+    color: black;
+    padding: 14px 28px;
+    margin: 20px 4px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+  /* start */
+  .start {
+    border-color: #04AA6D;
+    color: green;
+  }
+  .start:hover {
+    background-color: #04AA6D;
+    color: white;
+  }
+
+  /* reset */
+  .reset {
+    border-color: #f2f2f2;
+    color: black;
+  }
+  .reset:hover {
+    background-color: #f2f2f2;
+    color: black;
+  }
+
+  /* stop */
+  .stop {
+    border-color: #f44336;
+    color: red;
+  }
+  .stop:hover {
+    background: #f44336;
+    color: white;
+  }
+
+  /* odecist */
+  .odecist {
+    border-color: #2196F3;
+    color: dodgerblue;
+  }
+
+  .odecist:hover {
+    background: #2196F3;
+    color: white;
+  }
+
+  /* nabidka */
+  .nabidka {
+    border: 2px solid black;
+    background-color: white;
+    color: black;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+  /* Upravení vzhledu tagu select */
+  select {
+    background-color: #f2f2f2; /* Barva pozadí */
+    color: #333; /* Barva textu */
+    padding: 10px; /* Odsazení */
+    margin-top: 12px;
+    border: none; /* Žádný rámeček */
+    border-radius: 5px; /* Zaoblené rohy */
+    width: 100%; /* Šířka */
+    font-size: 16px; /* Velikost písma */
+  }

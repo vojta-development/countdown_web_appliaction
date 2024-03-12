@@ -1,4 +1,4 @@
-# Countdown web apllication
+# Countdown web application
 
 Tato jednouchá webová aplikace umožňuje ovládat několik na sobě nezávislých countdownů. Každý z nich má svou jedinečnou URL adresu. Funkce odpočítávání času běží na serveru pomocí *Node.js*, tzn.: countdown se ve webovém prohlížeči jen zobrazuje. Díky tomu se po refreshu stránky s countdownem čas neresetuje, ale běží dál.
 

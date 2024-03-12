@@ -225,7 +225,7 @@ Tady nastvává trochu komplikace, jelikož mé programátorské skills nejsou z
 
 # Instalace lokálního Node.js
 Abychom mohli testovat a ladit program, který běží na Node.js, je dobré si ho do svého počítače nainstalovat. Zde je jednoduchý návod jak na to:
-### 1) Stáhneme a nainstalujeme si balíček .exe
+### 1) Stáhni a nainstaluj si balíček .exe
 Na oficiálním [webu](https://nodejs.org/en) si stáhneme a nainstalujeme balíčet s Node.js.
 ### 2) Inicializuj nový projekt:
 Vytvoř nový adresář pro projekt a otevři v něm příkazový řádek. Poté spusť následující příkazy:
@@ -233,10 +233,10 @@ Vytvoř nový adresář pro projekt a otevři v něm příkazový řádek. Poté
 npm init -y
 npm install express socket.io
 ```
-### 3) spusť *server.js*
+### 3) Spusť *server.js*
 V příkazovém řádku ve správném adresáři spusť soubor *server.js* pomocí příkazu
 ```bash
 node server.js
 ```
-### otevři webovou stránku
+### 4) Otevři webovou stránku
 Pokud vše běží správně, otevři ve webovém prohlížeči *http://127.0.0.1:3000/* a uvidíš svoji aplikaci.
